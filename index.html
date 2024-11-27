@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PicoCAD Viewer Example</title>
-    <script src="https://hayden-27.github.io/picoHost/pico-cad-viewer.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pico Viewer</title>
+  <script src="https://cdn.jsdelivr.net/gh/hayden-27/picoHost/pico-cad-viewer.min.js"></script>
 </head>
 <body>
-    <h1>PicoCAD Viewer</h1>
+  <h1>Pico Viewer</h1>
+  
+  <div id="pico-viewer"></div>
 
-    <!-- Canvas element where the PicoCAD viewer will render -->
-    <canvas id="my-canvas" width="800" height="600"></canvas>
+  <script>
+    // Initialize the Pico CAD Viewer
+    var viewer = new PicoCADViewer({
+      containerId: 'pico-viewer', // The div where the viewer will be rendered
+      modelUrl: 'https://raw.githubusercontent.com/hayden-27/picoHost/main/basic_shirt_test.txt' // URL to your model file
+    });
 
-    <script>
-        // Initialize PicoCAD viewer and load the model
-        const myCanvas = document.getElementById("my-canvas");
-        const viewer = new PicoCADViewer({ canvas: myCanvas });
-
-        // Load your model (replace the URL with your actual model URL)
-        viewer.load("https://hayden-27.github.io/picoHost/your-model-file.txt");
-
-        // Start the drawing loop
-        viewer.startDrawLoop();
-    </script>
+    // Optionally, start the viewer
+    viewer.loadModel().then(() => {
+      viewer.render();
+    }).catch(err => {
+      console.error('Error loading model:', err);
+    });
+  </script>
 </body>
 </html>

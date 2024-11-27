@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pico Viewer</title>
-  <script src="https://cdn.jsdelivr.net/gh/hayden-27/picoHost/pico-cad-viewer.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pico Viewer</title>
+    <script src="https://hayden-27.github.io/picoHost/pico-cad-viewer.min.js"></script> <!-- Correct link to your script -->
 </head>
 <body>
-  <h1>Pico Viewer</h1>
-  
-  <div id="pico-viewer"></div>
-
-  <script>
-    // Initialize the Pico CAD Viewer
-    var viewer = new PicoCADViewer({
-      containerId: 'pico-viewer', // The div where the viewer will be rendered
-      modelUrl: 'https://raw.githubusercontent.com/hayden-27/picoHost/main/basic_shirt_test.txt' // URL to your model file
-    });
-
-    // Optionally, start the viewer
-    viewer.loadModel().then(() => {
-      viewer.render();
-    }).catch(err => {
-      console.error('Error loading model:', err);
-    });
-  </script>
+    <h1>Pico Viewer</h1>
+    <canvas id="canvas"></canvas> <!-- Your canvas for the viewer -->
+    <script>
+        var viewer = new PicoCAD.Viewer({
+            canvas: document.getElementById('canvas'),
+            model: 'https://raw.githubusercontent.com/hayden-27/picoHost/main/basic_shirt_test.txt',  // Correct model path
+        });
+    </script>
 </body>
 </html>
